@@ -1,0 +1,157 @@
+import java.util.*;
+public class KasirCitraMart {
+    public static void main(String[] args) {
+
+        Scanner angka = new Scanner(System.in);
+        Scanner barang = new Scanner(System.in);
+        Scanner login = new Scanner(System.in);
+
+        String[] data = {"buddy", "123"};
+        String username, password;
+        System.out.println("= = = = = = = = = = = = = = = = = = = = = =");
+        System.out.println("================CITRA MART=================");
+        System.out.println("===================KASIR===================");
+        System.out.println("= = = = = = = = = = = = = = = = = = = = = =");
+
+        System.out.print("\nUsername \t: ");
+        username = login.nextLine();
+        System.out.print("\nPassword \t: ");
+        password = login.nextLine();
+
+        if (username.equals(data[0]) && password.equals(data[1])) {
+            System.out.println("****************Selamat Datang****************");
+            System.out.println();
+            System.out.println("--------------------");
+            System.out.println("| Menu :           |");
+            System.out.println("| 1. Makanan       |");
+            System.out.println("| 2. Minuman       |");
+            System.out.println("| 3. Keluar        |");
+            System.out.println("--------------------");
+            Scanner input = new Scanner(System.in);
+            int menu;
+            System.out.print("\nSilahkan Masukkan Menu : ");
+            menu = input.nextInt();
+
+            switch (menu) {
+                case 1:
+                    //Makanan
+                    System.out.println("= = = = = = MAKANAN = = = = = =\n");
+                    System.out.print("Masukkan Jumlah Jenis Makanan yang ingin Dibeli\t: ");
+                    int maksimal = angka.nextInt();
+                    System.out.println("================================================");
+                    int uang, kembalian;
+                    int[] hb = new int[maksimal];
+                    int[] jml = new int[maksimal];
+                    int[] total = new int[maksimal];
+                    String[] mkn = new String[maksimal];
+                    int totalsemua = 0;
+                    int i;
+                    for (i = 0; i < maksimal; i++) {
+                        System.out.print("Masukkan Nama   Makanan Ke " + (i + 1) + " \t: ");
+                        mkn[i] = barang.nextLine();
+                        System.out.print("Masukkan Jumlah Pesanan Ke " + (i + 1) + " \t: ");
+                        jml[i] = angka.nextInt();
+                        System.out.print("Masukkan Harga  Makanan Ke " + (i + 1) + " \t: Rp ");
+                        hb[i] = angka.nextInt();
+                        total[i] = jml[i] * hb[i];
+                        System.out.println("Total  Harga  Makanan Ke " + (i + 1) + " \t: Rp " + total[i]);
+                        totalsemua = totalsemua + jml[i] * hb[i];
+
+                        System.out.println("Penginputan   Pesanan Ke " + (i + 1) + " Telah Selesai ");
+
+                        System.out.println("=============================================");
+                    }
+
+                    System.out.println();
+                    System.out.println("====================================================================================================");
+                    System.out.println("||\tNo\t||\tNama Barang\t||\tJumlah Barang\t||\tHarga Barang\t||\tTotal Harga\t||");
+                    for (i = 0; i < maksimal; i++) {
+                        System.out.println("====================================================================================================");
+                        System.out.println("||\t" + (i + 1) + "\t||\t" + mkn[i] + "\t||\t" + jml[i] + "\t\t||\t Rp " + hb[i] + "\t||\t Rp " + total[i] + "\t||");
+                        System.out.println("====================================================================================================");
+                    }
+                    System.out.println("||\tTotal Harga Keseluruhan \t\t\t\t\t\t\t\t\t||\t Rp " + totalsemua + "\t||");
+                    System.out.println("====================================================================================================");
+                    System.out.println();
+                    System.out.print("\tPembayaran \t: Rp ");
+                    uang = angka.nextInt();
+                    if (uang <= totalsemua) {
+                        System.out.println("\t\t Nominal Uang yang Anda Masukkan tidak Cukup");
+                        System.out.println("\t\t Silahkan Masukkan Nominal Uang Kembali");
+                        System.out.print("\tPembayaran \t: Rp ");
+                        uang = angka.nextInt();
+                    }
+                    kembalian = uang - totalsemua;
+                    System.out.print("\tKembalian \t: Rp " + kembalian);
+                    System.out.println();
+                    System.out.println("\t\t\t*****TERIMA KASIH ATAS KUNJUNGAN ANDA!*****");
+
+                    break;
+                case 2:
+                    //Minuman
+                    System.out.println("= = = = = = MINUMAN = = = = = =\n");
+                    System.out.println();
+                    System.out.print("Masukkan Jumlah Jenis Minuman yang ingin Dibeli\t: ");
+                    int maksimal2 = angka.nextInt();
+                    System.out.println("================================================");
+                    int uang2, kembalian2;
+                    int[] hb2 = new int[maksimal2];
+                    int[] jml2 = new int[maksimal2];
+                    int[] total2 = new int[maksimal2];
+                    String[] mnm = new String[maksimal2];
+                    int totalsemua2 = 0;
+
+                    for (i = 0; i < maksimal2; i++) {
+                        System.out.print("Masukkan Nama   Minuman Ke " + (i + 1) + " \t: ");
+                        mnm[i] = barang.nextLine();
+                        System.out.print("Masukkan Jumlah Pesanan Ke " + (i + 1) + " \t: ");
+                        jml2[i] = angka.nextInt();
+                        System.out.print("Masukkan Harga  Minuman Ke " + (i + 1) + " \t: Rp ");
+                        hb2[i] = angka.nextInt();
+                        total2[i] = jml2[i] * hb2[i];
+                        System.out.println("Total    Harga  Minuman Ke " + (i + 1) + " \t: Rp " + total2[i]);
+                        totalsemua2 = totalsemua2 + jml2[i] * hb2[i];
+
+                        System.out.println("Penginputan Minuman Ke " + (i + 1) + " Telah Selesai ");
+                        System.out.println("=============================================");}
+
+                    System.out.println();
+                    System.out.println("====================================================================================================");
+                    System.out.println("||\tNo\t||\tNama Barang\t||\tJumlah Barang\t||\tHarga Barang\t||\tTotal Harga\t||");
+                    for (i = 0; i < maksimal2; i++) {
+                        System.out.println("====================================================================================================");
+                        System.out.println("||\t" + (i + 1) + "\t||\t" + mnm[i] + "\t||\t" + jml2[i] + "\t\t||\t Rp " + hb2[i] + "\t||\t Rp " + total2[i] + "\t||");
+                        System.out.println("====================================================================================================");
+                    }
+                    System.out.println("||\tTotal Harga Keseluruhan \t\t\t\t\t\t\t\t\t||\t Rp " + totalsemua2 + "\t||");
+                    System.out.println("====================================================================================================");
+                    System.out.println();
+                    System.out.print("\tPembayaran \t: Rp ");
+                    uang2 = angka.nextInt();
+                    if (uang2 <= totalsemua2) {
+                        System.out.println("\t\t Nominal Uang yang Anda Masukkan tidak Cukup");
+                        System.out.println("\t\t Silahkan Masukkan Nominal Uang Kembali");
+                        System.out.print("\tPembayaran \t: Rp ");
+                        uang2 = angka.nextInt();
+                    }
+                    kembalian2 = uang2 - totalsemua2;
+                    System.out.print("\tKembalian \t: Rp " + kembalian2);
+                    System.out.println();
+                    System.out.println("\t\t\t*****TERIMA KASIH ATAS KUNJUNGAN ANDA!*****");
+                    break;
+                case 3:
+
+                    System.out.println("Proses Telah Selesai, Sistem Akan Keluar");
+                    System.exit(0);
+                    break;
+                default :
+                    //Jika Salah
+                    System.out.println("Maaf Tidak ada Kode "+menu+" System Akan Keluar");
+                    System.exit(0);
+            }
+        } else {
+            System.out.println("Maaf Username dan Password Tidak Tersedia");
+            System.exit(0);
+        }
+    }
+}
